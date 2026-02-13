@@ -11,6 +11,7 @@ import Header from "./Header";
 import CourseCard from "./CourseCard";
 import EnrollmentCard from "./EnrollmentCard";
 import { use, useState } from "react";
+import SearchBar from "./SearchBar";
 
 type DashboardProps = {
   studentName: string;
@@ -34,6 +35,9 @@ export default function Dashboard({ studentName }: DashboardProps) {
     { title: "React", progress: 40 },
     { title: "Node.js", progress: 30 },
     { title: "AI", progress: 10 },
+    { title: "Data Structures", progress: 0 },
+    { title: "MongoDB", progress: 10 },
+    { title: "Express", progress: 20 },
   ]);
 
   const handleEnroll = () => {
@@ -53,9 +57,11 @@ export default function Dashboard({ studentName }: DashboardProps) {
             <h2>Welcome, {studentName}</h2>
             <p>Your learning overview is shown below:</p>
           </div>
+
+          <SearchBar />
           {/*Enrolled Courses*/}
           <div>
-            <h3>Enrolled courses:</h3>
+            {/* <h3>Enrolled courses:</h3>
             <EnrollmentCard onEnroll={handleEnroll} />{" "}
             {/*passing the handleEnroll function(giving it's reference)
             to the child using the prop onEnroll
@@ -63,14 +69,17 @@ export default function Dashboard({ studentName }: DashboardProps) {
             {/*enrolled is set from the useState and the condition is applied 
             even if enrolled will always be true because the logic needs to be UI 
             based and flexible not event driven*/}
-            <p>Status: {enrolled ? "Enrolled" : "Not Enrolled"}</p>
+            {/*<p>Status: {enrolled ? "Enrolled" : "Not Enrolled"}</p> */}
+            {courses.map((course) => (
+              <CourseCard title={course.title} progress={course.progress} />
+            ))}
             {/*the "title" and "progress" are both props like onEnroll one passes function
-            one values*/}
+            one values
             <CourseCard
               title="React"
               progress={reactProgress}
               studentName={studentName} //studentName needs to exist in CourseCard as well for it to display
-            />
+            />*/}
             <button
               onClick={() => {
                 setReactProgress(reactProgress + 10); //calls setReactProgress with reactProgress'

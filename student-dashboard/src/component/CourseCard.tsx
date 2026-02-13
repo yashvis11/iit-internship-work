@@ -1,7 +1,6 @@
 type CourseCardProps={ //the structure of the props that will be passed by the parent
   title: string;
-  progress: number,
-  studentName: string;
+  progress: number;
 }
 
 export default function CourseCard(props: CourseCardProps) {  //Only show UI does not have dynamic behaviour yet
