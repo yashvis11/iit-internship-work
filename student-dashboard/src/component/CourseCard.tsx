@@ -1,9 +1,12 @@
-type CourseCardProps={ //the structure of the props that will be passed by the parent
+type CourseCardProps = {
+  //the structure of the props that will be passed by the parent
   title: string;
-  progress: number;
-}
+  level: string;
+  students: number;
+};
 
-export default function CourseCard(props: CourseCardProps) {  //Only show UI does not have dynamic behaviour yet
+export default function CourseCard(props: CourseCardProps) {
+  //Only show UI does not have dynamic behaviour yet
   return (
     <>
       <div
@@ -15,7 +18,8 @@ export default function CourseCard(props: CourseCardProps) {  //Only show UI doe
         }}
       >
         <h3>{props.title}</h3>
-        <p>{props.progress}%</p>
+        <p>Level: {props.level}</p>
+        <p>Number of Students:{props.students}</p>
       </div>
     </>
   );
